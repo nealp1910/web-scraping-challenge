@@ -18,7 +18,6 @@
       <a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a>
     </div>
 
-  <!-- New section with latest news -->
   <div class="row">
     <div class="col-md-12">
       <div class="media">
@@ -35,47 +34,48 @@
 <!-- New section divided into two columns -->
 <div class="row">
 
-<!-- Left Side -->
-<!-- Row for Featured Mars Image -->  
-  <div class="col-md-8">
-    <h3><b>Featured Mars Image</b></h3>
-    <img src={{mars_data.featured_image_url}} height=auto width=750px>
-  </div>
-
-  <!-- Right Side is divided into two rows -->
-  <!-- Row for Mars Weather Tweet -->
-  <div class="col-md-4">
-        <div class="row">
-      <div class="col-md-12">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <h4><b>Mars Facts</b></h4>
-            <p>{{mars_data.mars_planet_profile}}</p>
-          </div>
-        </div>
+    <!-- Left Side -->
+    <!-- Row for Featured Mars Image -->  
+      <div class="col-md-8">
+        <h3><b>Featured Mars Image</b></h3>
+        <img src={{mars_data.featured_image_url}} height=auto width=750px>
       </div>
-    </div>       
-  </div>
-</div>
-
-<!-- New Section is divided into a 2x2 panel for Hemisphere Images -->
-<div class="row" style="margin-top:80px;">
-  <div class="page-header">
-    <h2 class="text-center"><b>Mars Hemispheres</b></h2>
-  </div>
-  <!-- Loop through hemispheres dictionary with images and titles -->
-  {% for hemisphere in mars_data.hemisphere_image_urls %}
-    <div class="col-md-6">
-      <div class="thumbnail">
-        <img src="{{hemisphere.img_url}}">
-      <div class="caption">
-        <h3><b>{{hemisphere.title}}</b></h3>
+    
+      <!-- Right Side is divided into two rows -->
+      <!-- Row for Mars Weather Tweet -->
+      <div class="col-md-4">
+            <div class="row">
+          <div class="col-md-12">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <h4><b>Mars Facts</b></h4>
+                <p>{{mars_data.mars_facts | safe}}</p>
+              </div>
+            </div>
+          </div>
+        </div>       
       </div>
     </div>
-  {% endfor %}
-</div>
-</body>
-</html>
+    
+    <!-- New Section is divided into a 2x2 panel for Hemisphere Images -->
+    <div class="row" style="margin-top:80px;">
+      <div class="page-header">
+        <h2 class="text-center"><b>Mars Hemispheres</b></h2>
+      </div>
+      <!-- Loop through hemispheres dictionary with images and titles -->
+      {% for hemisphere in mars_data.hemisphere_image_urls %}
+        <div class="col-md-6">
+          <div class="thumbnail">
+            <img src="{{hemisphere.img_url}}">
+          <div class="caption">
+            <h3><b>{{hemisphere.title}}</b></h3>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    </body>
+    </html>
+    
 
 </div>
 

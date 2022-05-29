@@ -9,6 +9,8 @@ app = Flask(__name__)
 # Use flask_pymongo to set up mongo connection
 mongo = PyMongo(app, uri="mongodb://localhost:27017/mars_app")
 
+
+
 # Route to render index.html template using data from Mongo
 @app.route("/")
 def index():
@@ -28,8 +30,8 @@ def scrape():
     mars_data = scrape_mars.scrape()
 
     # Update the Mongo database using update and upsert=True
-    mongo.db.mars_data.update({}, mars_data, upsert=True)
-    return 'Complete!'
+    mongo.db.collection.update_one({}, {"$Set": mars_data}, upsert=True)
+    return redirect("/")
 
 if __name__ == "__main__":
     app.run(debug=True)
